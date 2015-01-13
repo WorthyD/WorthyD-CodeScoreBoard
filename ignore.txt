@@ -1,3 +1,0 @@
-SteamAchievementTracker.Web/.nuget
-SteamAchievementTracker.Web/packages
-jquery-1.10.2.js
