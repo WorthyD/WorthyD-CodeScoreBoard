@@ -19,6 +19,16 @@ namespace WorthyD.CodeScoreBoard.DataAccess.Models {
         [Required]
         public string ProjectPath { get; set; }
 
+        [StringLength(200)]
+        [Required]
+        public string IgnoreRegex { get; set; }
+
+
+
+        [StringLength(200)]
+        [Required]
+        public string PrimaryLanguages { get; set; }
+
 
 
         public virtual ICollection<CodeLog> CodeLogs { get; set; }

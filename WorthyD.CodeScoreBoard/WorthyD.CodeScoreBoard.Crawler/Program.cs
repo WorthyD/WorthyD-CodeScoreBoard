@@ -5,39 +5,53 @@ using System.Linq;
 using System.Text;
 using WorthyD.CodeScoreBoard.DataAccess;
 
-namespace WorthyD.CodeScoreBoard.Crawler {
-    class Program {
-        static void Main(string[] args) {
-            string file = "cloc --exclude-dir=.nuget,packages,scripts D:\\Dev\\WorthyD-LiveCodeCounter --csv --quiet";
+namespace WorthyD.CodeScoreBoard.Crawler
+{
+    class Program
+    {
+        private static CodeScoreBoardContext context;
+        static void Main(string[] args)
+        {
+            context = new CodeScoreBoardContext();
 
-            string cmd = ExecuteCommand(file);
-            List<string> rows = cmd.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
+            var projects = context.Projects.ToList();
+
+            foreach (var p in projects)
+            {
+
+                string file = string.Format("cloc --exclude-dir={0} {1} --csv --quiet", p.IgnoreRegex, p.ProjectPath);
+
+                string cmd = ExecuteCommand(file);
+                List<string> rows = cmd.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).ToList();
 
 
-            //var projects = new List<WorthyD.CodeScoreBoard.DataAccess.Models.Project>{
-            //    new WorthyD.CodeScoreBoard.DataAccess.Models.Project(){ ProjectDetails="Code Counter", ProjectPath="D:\\Dev\\WorthyD-LiveCodeCounter "}
-            //};
-            //projects.ForEach(p => context.Projects.Add(p));
-            //var count = context.Projects.Count();
+                //var projects = new List<WorthyD.CodeScoreBoard.DataAccess.Models.Project>{
+                //    new WorthyD.CodeScoreBoard.DataAccess.Models.Project(){ ProjectDetails="Code Counter", ProjectPath="D:\\Dev\\WorthyD-LiveCodeCounter "}
+                //};
+                //projects.ForEach(p => context.Projects.Add(p));
+                //var count = context.Projects.Count();
 
-            ProcessRows(rows);
+                ProcessRows(rows, p.ID);
+            }
 
-            //Console.WriteLine(count);
-            Console.WriteLine(cmd);
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
-        public static void ProcessRows(List<string> rows) {
+        public static void ProcessRows(List<string> rows, int id)
+        {
             List<DataAccess.Models.CodeLog> logs = new List<DataAccess.Models.CodeLog>();
 
-            CodeScoreBoardContext context = new CodeScoreBoardContext();
-            foreach (var row in rows) {
+
+            foreach (var row in rows)
+            {
                 string[] parts = row.Split(',');
                 int fileCount = 0;
 
                 //CSV output is bringing in blank lines. We don't care about the header row.
-                if (parts.Length != 0 && int.TryParse(parts[0], out fileCount)) {
-                    try {
+                if (parts.Length != 0 && int.TryParse(parts[0], out fileCount))
+                {
+                    try
+                    {
                         DataAccess.Models.CodeLog logItem = new DataAccess.Models.CodeLog();
                         logItem.FileCount = fileCount;
                         logItem.Language = parts[1];
@@ -45,11 +59,13 @@ namespace WorthyD.CodeScoreBoard.Crawler {
                         logItem.CommentLines = int.Parse(parts[3]);
                         logItem.CodeLines = int.Parse(parts[4]);
 
-                        logItem.LogTime = DateTime.Now;//Refine this to be by 5 minutes
-                        logItem.ProjectID = 1;
+                        logItem.LogTime = RoundUp(DateTime.Now, TimeSpan.FromMinutes(5));
+                        logItem.ProjectID = id;
 
                         logs.Add(logItem);
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e)
+                    {
                         Console.WriteLine(e.Message);
 
                     }
@@ -61,7 +77,8 @@ namespace WorthyD.CodeScoreBoard.Crawler {
             context.SaveChanges();
         }
 
-        static string ExecuteCommand(string command) {
+        static string ExecuteCommand(string command)
+        {
             int exitCode;
             ProcessStartInfo processInfo;
             Process process;
@@ -87,6 +104,10 @@ namespace WorthyD.CodeScoreBoard.Crawler {
             Console.WriteLine("ExitCode: " + exitCode.ToString(), "ExecuteCommand");
             process.Close();
             return output;
+        }
+        static DateTime RoundUp(DateTime dt, TimeSpan d)
+        {
+            return new DateTime(((dt.Ticks + d.Ticks - 1) / d.Ticks) * d.Ticks);
         }
     }
 }

@@ -15,18 +15,29 @@ namespace WorthyD.CodeScoreBoard.DataAccess.Migrations
 
         protected override void Seed(WorthyD.CodeScoreBoard.DataAccess.CodeScoreBoardContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Projects.AddOrUpdate(x => x.ProjectDetails, new Models.Project
+            {
+                ProjectPath = "C:\\Dev\\PersonalProjects\\WorthyD",
+                ProjectDetails = "Win8 App",
+                IgnoreRegex = "WorthyD's Project",
+                PrimaryLanguages = "JS,CSS,C#"
+            });
+
+
+            context.Projects.AddOrUpdate(x => x.ProjectDetails, new Models.Project
+            {
+                ProjectPath = "C:\\Dev\\PersonalProjects\\steamapp",
+                ProjectDetails = "Win8 App",
+                IgnoreRegex = ".nuget,packages,scripts",
+                PrimaryLanguages = "Xaml,C#"
+            });
+
+
+
+
+            context.SaveChanges();
+
         }
     }
 }

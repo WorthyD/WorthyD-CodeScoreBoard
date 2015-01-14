@@ -57,6 +57,14 @@
     <Compile Include="Migrations\201501141053125_AddedSomeMoreColumns.Designer.cs">
       <DependentUpon>201501141053125_AddedSomeMoreColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501141823477_AddingIgnore.cs" />
+    <Compile Include="Migrations\201501141823477_AddingIgnore.Designer.cs">
+      <DependentUpon>201501141823477_AddingIgnore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501141842014_AddedProjectTypes.cs" />
+    <Compile Include="Migrations\201501141842014_AddedProjectTypes.Designer.cs">
+      <DependentUpon>201501141842014_AddedProjectTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CodeLog.cs" />
     <Compile Include="Models\Project.cs" />
@@ -72,6 +80,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501141053125_AddedSomeMoreColumns.resx">
       <DependentUpon>201501141053125_AddedSomeMoreColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501141823477_AddingIgnore.resx">
+      <DependentUpon>201501141823477_AddingIgnore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501141842014_AddedProjectTypes.resx">
+      <DependentUpon>201501141842014_AddedProjectTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
