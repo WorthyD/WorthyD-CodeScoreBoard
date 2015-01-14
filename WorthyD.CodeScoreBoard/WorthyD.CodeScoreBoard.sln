@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorthyD.CodeScoreBoard.Craw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorthyD.CodeScoreBoard.DataAccess", "WorthyD.CodeScoreBoard.DataAccess\WorthyD.CodeScoreBoard.DataAccess.csproj", "{CBD4BEAE-9179-4C65-8462-2470406EAD2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorthyD.CodeScoreBoard.WebUI", "WorthyD.CodeScoreBoard.WebUI\WorthyD.CodeScoreBoard.WebUI.csproj", "{D03AE259-4501-4A00-A8DD-413740EBAFB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CBD4BEAE-9179-4C65-8462-2470406EAD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD4BEAE-9179-4C65-8462-2470406EAD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD4BEAE-9179-4C65-8462-2470406EAD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D03AE259-4501-4A00-A8DD-413740EBAFB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03AE259-4501-4A00-A8DD-413740EBAFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03AE259-4501-4A00-A8DD-413740EBAFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03AE259-4501-4A00-A8DD-413740EBAFB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
