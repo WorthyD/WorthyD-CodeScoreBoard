@@ -49,6 +49,15 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CodeScoreBoardContext.cs" />
     <Compile Include="CodeScoreBoardInitializer.cs" />
+    <Compile Include="Migrations\201501130222539_InitialCreate.cs" />
+    <Compile Include="Migrations\201501130222539_InitialCreate.Designer.cs">
+      <DependentUpon>201501130222539_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501141053125_AddedSomeMoreColumns.cs" />
+    <Compile Include="Migrations\201501141053125_AddedSomeMoreColumns.Designer.cs">
+      <DependentUpon>201501141053125_AddedSomeMoreColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CodeLog.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,7 +66,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201501130222539_InitialCreate.resx">
+      <DependentUpon>201501130222539_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501141053125_AddedSomeMoreColumns.resx">
+      <DependentUpon>201501141053125_AddedSomeMoreColumns.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
