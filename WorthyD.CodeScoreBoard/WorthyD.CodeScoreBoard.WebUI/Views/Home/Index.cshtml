@@ -16,7 +16,7 @@
 
 <script id="project-template" type="text/x-handlebars-template">
     {{#each Projects}}
-    <div class="project-{{@@index}}">
+    <div class="project-{{@@index}} col-md-4 col-sm-6 col-xs-12">
         <h2>{{ProjectName}}</h2>
         <div class="chart">
 
@@ -45,39 +45,37 @@
                 $('#project-body').html(template(data))
 
 
-                for (var i = 0; data.Projects.length; i++) {
+                for (var i = 0; i < data.Projects.length; i++) {
 
                     var p = data.Projects[i];
 
-                    console.log(p);
                     var prepedData = [];
 
-                    console.log(p.CodeTypes[i]);
                     for (var x = 0; x < p.CodeTypes.length; x++) {
-                        var d = p.CodeTypes[i].DateAndCounts[x];
+                        var d = p.CodeTypes[x];
+                        console.log(p.CodeTypes[x]);
                         //console.log(d);
                         var codeTypeArray = [];
 
-                        console.log('d');
-                        console.log(d);
-                        for (var y = 0; y < d.length; y++) {
-                            
-                            //codeTypeArray.push([d[y].Key, d[y].Value]);
+
+                        for (var y = 0; y < d.DateAndCounts.length; y++) {
+
+                            codeTypeArray.push([d.DateAndCounts[y].Key, d.DateAndCounts[y].Value]);
                         }
 
-                        //prepedData.push(codeTypeArray);
+                        prepedData.push({ label: d.CodeName, data: codeTypeArray });
                         //prepedData.push([d.Key, d.Value]);
-                        prepedData.push([d.Key, d.Value]);
+                        //prepedData.push([d.Value]);
                     }
-                    console.log(prepedData);
 
                     //CodeTypes
                     var stack = 0,
                         bars = false,
                         lines = true,
                         steps = false;
+
                     $.plot(".project-" + i + ' .chart', prepedData, {
-                        //xaxis: { mode: "time" },
+                        xaxis: { mode: "time" },
                         series: {
                             stack: stack,
                             lines: {
