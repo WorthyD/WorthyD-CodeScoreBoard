@@ -18,6 +18,7 @@ namespace WorthyD.CodeScoreBoard.WebUI.Controllers
         }
         public Models.ProjectSnapShot GetProjectStats()
         {
+            return Models.ProjectSnapShot.GenerateDummyData();
 
             return new Models.ProjectSnapShot(context.Projects.Include("CodeLogs").ToList());
         }

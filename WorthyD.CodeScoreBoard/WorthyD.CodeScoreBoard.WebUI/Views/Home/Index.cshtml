@@ -1,5 +1,106 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+<style>
+    .chart {
+        display: block;
+        height: 400px;
+        width: 400px;
+    }
+</style>
 
 <h2>Index</h2>
+<div id="project-body">
+
+</div>
+
+<script id="project-template" type="text/x-handlebars-template">
+    {{#each Projects}}
+    <div class="project-{{@@index}}">
+        <h2>{{ProjectName}}</h2>
+        <div class="chart">
+
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+@section scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="~/Scripts/Flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/Flot/jquery.flot.time.min.js"></script>
+    <script src="~/Scripts/Flot/jquery.flot.stack.min.js"></script>
+    <input type="hidden" id="projectUrl" value="@Href("~/api/statsapi/GetProjectStats")" />
+
+
+    <script>
+        //I know this should be in an external file, but I'm being lazy right now.
+
+
+        $(function () {
+            $.get($('#projectUrl').val(), function (data) {
+                var source = $("#project-template").html();
+                var template = Handlebars.compile(source);
+                $('#project-body').html(template(data))
+
+
+                for (var i = 0; data.Projects.length; i++) {
+
+                    var p = data.Projects[i];
+
+                    console.log(p);
+                    var prepedData = [];
+
+                    console.log(p.CodeTypes[i]);
+                    for (var x = 0; x < p.CodeTypes.length; x++) {
+                        var d = p.CodeTypes[i].DateAndCounts[x];
+                        //console.log(d);
+                        var codeTypeArray = [];
+
+                        console.log('d');
+                        console.log(d);
+                        for (var y = 0; y < d.length; y++) {
+                            
+                            //codeTypeArray.push([d[y].Key, d[y].Value]);
+                        }
+
+                        //prepedData.push(codeTypeArray);
+                        //prepedData.push([d.Key, d.Value]);
+                        prepedData.push([d.Key, d.Value]);
+                    }
+                    console.log(prepedData);
+
+                    //CodeTypes
+                    var stack = 0,
+                        bars = false,
+                        lines = true,
+                        steps = false;
+                    $.plot(".project-" + i + ' .chart', prepedData, {
+                        //xaxis: { mode: "time" },
+                        series: {
+                            stack: stack,
+                            lines: {
+                                show: lines,
+                                fill: true,
+                                steps: steps
+                            }
+                        }
+                    });
+                }
+
+
+            });
+
+
+
+
+
+
+
+        });
+
+
+
+    </script>
+}

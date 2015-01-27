@@ -146,6 +146,38 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Flot\jquery.colorhelpers.js" />
+    <Content Include="Scripts\Flot\jquery.colorhelpers.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.canvas.js" />
+    <Content Include="Scripts\Flot\jquery.flot.canvas.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.categories.js" />
+    <Content Include="Scripts\Flot\jquery.flot.categories.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.crosshair.js" />
+    <Content Include="Scripts\Flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.errorbars.js" />
+    <Content Include="Scripts\Flot\jquery.flot.errorbars.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.fillbetween.js" />
+    <Content Include="Scripts\Flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.image.js" />
+    <Content Include="Scripts\Flot\jquery.flot.image.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.js" />
+    <Content Include="Scripts\Flot\jquery.flot.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.navigate.js" />
+    <Content Include="Scripts\Flot\jquery.flot.navigate.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.pie.js" />
+    <Content Include="Scripts\Flot\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.resize.js" />
+    <Content Include="Scripts\Flot\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.selection.js" />
+    <Content Include="Scripts\Flot\jquery.flot.selection.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.stack.js" />
+    <Content Include="Scripts\Flot\jquery.flot.stack.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.symbol.js" />
+    <Content Include="Scripts\Flot\jquery.flot.symbol.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.threshold.js" />
+    <Content Include="Scripts\Flot\jquery.flot.threshold.min.js" />
+    <Content Include="Scripts\Flot\jquery.flot.time.js" />
+    <Content Include="Scripts\Flot\jquery.flot.time.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -186,16 +218,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60282</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60282/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
